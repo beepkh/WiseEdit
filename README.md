@@ -116,7 +116,7 @@ If you find WiseEdit helpful, please cite:
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2512.00387}, 
-      }
+}
 ```
 
 
