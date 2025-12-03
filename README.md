@@ -106,6 +106,18 @@ coming in one week!
 
 # ✍️Citation
 
-If you find KRIS-Bench helpful, please cite:
+If you find WiseEdit helpful, please cite:
+```bibtex
+@misc{pan2025wiseeditbenchmarkingcognitioncreativityinformed,
+      title={WiseEdit: Benchmarking Cognition- and Creativity-Informed Image Editing}, 
+      author={Kaihang Pan and Weile Chen and Haiyi Qiu and Qifan Yu and Wendong Bu and Zehan Wang and Yun Zhu and Juncheng Li and Siliang Tang},
+      year={2025},
+      eprint={2512.00387},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2512.00387}, 
+      }
+```
+
 
 
