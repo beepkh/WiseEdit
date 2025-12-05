@@ -108,14 +108,11 @@ coming in one week!
 
 If you find WiseEdit helpful, please cite:
 ```bibtex
-@misc{pan2025wiseeditbenchmarkingcognitioncreativityinformed,
-      title={WiseEdit: Benchmarking Cognition- and Creativity-Informed Image Editing}, 
-      author={Kaihang Pan and Weile Chen and Haiyi Qiu and Qifan Yu and Wendong Bu and Zehan Wang and Yun Zhu and Juncheng Li and Siliang Tang},
-      year={2025},
-      eprint={2512.00387},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2512.00387}, 
+@article{pan2025wiseedit,
+  title={WiseEdit: Benchmarking Cognition-and Creativity-Informed Image Editing},
+  author={Pan, Kaihang and Chen, Weile and Qiu, Haiyi and Yu, Qifan and Bu, Wendong and Wang, Zehan and Zhu, Yun and Li, Juncheng and Tang, Siliang},
+  journal={arXiv preprint arXiv:2512.00387},
+  year={2025}
 }
 ```
 
