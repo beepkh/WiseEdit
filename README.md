@@ -13,7 +13,7 @@ Yun Zhu<sup>2</sup> · Juncheng Li<sup>1</sup> · Siliang Tang<sup>1</sup>
 
 [![arXiv](https://img.shields.io/badge/arXiv-2512.00387-b31b1b.svg)](https://www.arxiv.org/abs/2512.00387)
 [![Project Page](https://img.shields.io/badge/Home-Page-b3.svg)](https://qnancy.github.io/wiseedit_project_page/)
-[![Dataset](https://img.shields.io/badge/🤗%20Huggingface-WiseEdit_dataset-yellow)](https://huggingface.co/datasets/YourName/WiseEdit)
+[![Dataset](https://img.shields.io/badge/🤗%20Huggingface-WiseEdit_dataset-yellow)](https://huggingface.co/datasets/123123chen/WiseEdit-Benchmark)
 [![Code](https://img.shields.io/badge/GitHub-Code-181717?logo=github)](https://github.com/beepkh/WiseEdit)
 
 </div>
@@ -37,9 +37,9 @@ WiseEdit is a knowledge-intensive benchmark for cognition- and creativity-inform
 ### TODO
 
 - [x] Release paper and project page.  
-- [ ] Release WiseEdit benchmark data.  
+- [x] Release WiseEdit benchmark data.  
 - [x] Release automatic evaluation code & prompts.  
-- [ ] Release baseline results & model outputs(coming soon).  
+- [x] Release baseline results & model outputs(coming soon).  
 
 # 💡 Overview
 
@@ -100,6 +100,13 @@ $\text{AVG} = \frac{\text{IF} + \text{DP} + \text{VQ} + \alpha \cdot \text{KF} +
 where $\alpha$ and $\beta$ are 1 only when KF / CF are applicable.
 Our user study shows strong correlation between this protocol and human ratings.  
 
+# 📊 Dataset & Results
+Our benchmark data is hosted on Hugging Face:  
+- **WiseEdit-Benchmark**: https://huggingface.co/datasets/123123chen/WiseEdit-Benchmark  
+
+All our model evaluation results are also released at:  
+- **WiseEdit-Results**: https://huggingface.co/datasets/midbee/WiseEdit-Results
+
 
 # 🚀 Usage
 This project requires Python 3.10.
@@ -135,7 +142,7 @@ export BASE_URL="https://api.openai.com/v1"
 ```
 
 ## Step 1: Run evaluation
-Run run_eval.py to score all subsets and produce score_*.csv:
+Run run_eval.py to score all subsets and produce `score_*.csv`:
 
 ```
 python run_eval.py \
