@@ -168,8 +168,8 @@ python run_eval.py \
 `run_eval.py` will write files like:
 
 ```
-/score_csv_root/Ming/score_Imagination_1.csv
-/score_csv_root/Ming/score_Awareness_1.csv
+/score_csv_root/Nano-banana-pro/score_Imagination_1.csv
+/score_csv_root/Nano-banana-pro/score_Awareness_1.csv
 ...
 ```
 
