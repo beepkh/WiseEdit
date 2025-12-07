@@ -251,7 +251,7 @@ def run_eval_for_one_csv(
         logging.info(f"[{subset_name}] All rows already fully scored. Skip re-evaluation.")
         return
 
-    # ========= Multi-thread evaluation: each thread handles one row =========
+    # Multi-thread evaluation: each thread handles one row
     def eval_single_row(idx_str: str, row: dict, dataset_root: str) -> Tuple[str, Dict[str, Optional[int]], Dict[str, Optional[int]]]:
         scores_cn: Dict[str, Optional[int]] = {m: None for m in ALL_METRICS}
         scores_en: Dict[str, Optional[int]] = {m: None for m in ALL_METRICS}
@@ -436,10 +436,12 @@ if __name__ == "__main__":
     base_url = os.environ.get("BASE_URL")
     if not base_url:
         base_url = "https://api.openai.com/v1"
-
     if not api_key:
         logging.error("Environment variables API_KEY are not set; please run 'export API_KEY=your_key' in the terminal first.")
         sys.exit(1)
+
+    # print(api_key)
+    # print(base_url)
 
     model_tag = args.name
     eval_model = args.eval_model

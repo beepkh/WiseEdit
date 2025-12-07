@@ -117,8 +117,10 @@ export BASE_URL="https://api.openai.com/v1"
 ```
 If BASE_URL is not set, it will automatically fall back to https://api.openai.com/v1.
 
-##Example with conda env
+## Example with conda env
 ```
+cd WiseEdit
+
 # 1) create and activate env
 conda create -n wiseedit python=3.10 -y
 conda activate wiseedit
@@ -132,7 +134,7 @@ export API_KEY="YOUR_API_KEY"
 export BASE_URL="https://api.openai.com/v1"
 ```
 
-##Step 1: Run evaluation
+## Step 1: Run evaluation
 Run run_eval.py to score all subsets and produce score_*.csv:
 
 ```
@@ -164,7 +166,7 @@ python run_eval.py \
 ...
 ```
 
-##Step 2: Aggregate statistics
+## Step 2: Aggregate statistics
 
 After all `score_*.csv` are ready, run `statistic.py`:
 ```
