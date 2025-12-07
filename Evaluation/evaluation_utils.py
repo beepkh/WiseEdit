@@ -6,8 +6,8 @@ import re
 import logging
 from typing import List, Optional, Dict, Tuple
 from PIL import Image
-from prompt_single import *
-from prompt_multi import *
+from .prompt_single import *
+from .prompt_multi import *
 import io
 
 from openai import OpenAI

@@ -23,7 +23,7 @@ CATEGORY_METRICS: Dict[str, List[str]] = {
     "Imagination": ["detail_preserving", "instruction_following", "visual_quality", "creative_fusion"],
     "Awareness": ["detail_preserving", "instruction_following", "visual_quality", "knowledge_fidelity"],
     "Interpretation": ["detail_preserving", "instruction_following", "visual_quality", "knowledge_fidelity"],
-    "Complex": ["detail_preserving", "instruction_following", "visual_quality", "knowledge_fidelity", "creative_fusion"],
+    "WiseEdit_Complex": ["detail_preserving", "instruction_following", "visual_quality", "knowledge_fidelity", "creative_fusion"],
 }
 
 METRIC_ABBR: Dict[str, str] = {
@@ -70,7 +70,7 @@ def list_base_subsets_by_category(dataset_dir: str) -> Dict[str, List[str]]:
                 continue
             csv_path = os.path.join(subset_dir, f"{subset}.csv")
             if os.path.isfile(csv_path):
-                ret["Complex"].append(subset)
+                ret["WiseEdit_Complex"].append(subset)
 
     for k in ret:
         ret[k] = sorted(ret[k])
@@ -82,7 +82,7 @@ def get_base_csv_path(dataset_dir: str, cat: str, subset: str) -> str:
     if cat in ("Imagination", "Awareness", "Interpretation"):
         wiseedit_dir = os.path.join(dataset_dir, "WiseEdit")
         return os.path.join(wiseedit_dir, cat, subset, f"{subset}.csv")
-    elif cat == "Complex":
+    elif cat == "WiseEdit_Complex":
         complex_root = os.path.join(dataset_dir, "WiseEdit-Complex")
         return os.path.join(complex_root, subset, f"{subset}.csv")
     else:
@@ -239,7 +239,7 @@ def summarize_one_model_by_category(
         overall = sum(vals_for_overall) / len(vals_for_overall) if vals_for_overall else 0.0
         return metric_means, overall
 
-    for cat in ("Imagination", "Awareness", "Interpretation", "Complex"):
+    for cat in ("Imagination", "Awareness", "Interpretation", "WiseEdit_Complex"):
         for lang in ("cn", "en"):
             metric_means, overall = compute_cat_lang_means(cat, lang)
             for m, v in metric_means.items():
@@ -271,12 +271,12 @@ def build_headers():
     header_cn.append("basic_overall_cn")
     header_en.append("basic_overall_en")
 
-    for m in CATEGORY_METRICS["Complex"]:
-        header_complex.append(f"Complex_{m}_cn")
-    header_complex.append("Complex_overall_cn")
-    for m in CATEGORY_METRICS["Complex"]:
-        header_complex.append(f"Complex_{m}_en")
-    header_complex.append("Complex_overall_en")
+    for m in CATEGORY_METRICS["WiseEdit_Complex"]:
+        header_complex.append(f"WiseEdit_Complex_{m}_cn")
+    header_complex.append("WiseEdit_Complex_overall_cn")
+    for m in CATEGORY_METRICS["WiseEdit_Complex"]:
+        header_complex.append(f"WiseEdit_Complex_{m}_en")
+    header_complex.append("WiseEdit_Complex_overall_en")
 
     return header_cn, header_en, header_complex
 
@@ -287,7 +287,7 @@ def print_final_results(model_tag: str, summary: Dict[str, float]) -> None:
 
     for lang, lang_label in (("cn", "Chinese"), ("en", "English")):
         print(f"\nWiseEdit-{lang_label} version")
-        task_order = ["Awareness", "Interpretation", "Imagination", "Complex"]
+        task_order = ["Awareness", "Interpretation", "Imagination", "WiseEdit_Complex"]
         for idx, cat in enumerate(task_order, start=1):
             display_name = cat
             metrics = CATEGORY_METRICS[cat]

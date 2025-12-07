@@ -278,6 +278,9 @@ def run_eval_for_one_csv(
                 if not ref_paths:
                     ref_paths = [ref_col]
 
+        if dataset_root and ref_paths:
+            ref_paths = [os.path.join(dataset_root, p) for p in ref_paths]
+
         edited_cn = find_edited_image(subset_name, "cn", idx_str, result_img_root=result_img_root)
         edited_en = find_edited_image(subset_name, "en", idx_str, result_img_root=result_img_root)
 
