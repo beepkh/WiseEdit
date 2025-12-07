@@ -37,8 +37,8 @@ WiseEdit is a knowledge-intensive benchmark for cognition- and creativity-inform
 ### TODO
 
 - [x] Release paper and project page.  
-- [ ] Release WiseEdit benchmark data(in one week).  
-- [ ] Release automatic evaluation code & prompts(in one week).  
+- [ ] Release WiseEdit benchmark data.  
+- [x] Release automatic evaluation code & prompts.  
 - [ ] Release baseline results & model outputs(coming soon).  
 
 # 💡 Overview
@@ -102,7 +102,89 @@ Our user study shows strong correlation between this protocol and human ratings.
 
 
 # 🚀 Usage
-coming in one week!
+This project requires Python 3.10.
+First install dependencies (from requirements.txt):
+
+`pip install -r requirements.txt`
+
+Set your API credentials (the evaluator calls an OpenAI-compatible Chat Completions API):
+
+```
+# required
+export API_KEY="YOUR_API_KEY"
+# optional: if not set, the default https://api.openai.com/v1 will be used
+export BASE_URL="https://api.openai.com/v1"
+```
+If BASE_URL is not set, it will automatically fall back to https://api.openai.com/v1.
+
+##Example with conda env
+```
+# 1) create and activate env
+conda create -n wiseedit python=3.10 -y
+conda activate wiseedit
+
+# 2) install requirements
+pip install -r requirements.txt
+
+# 3) set env vars
+export API_KEY="YOUR_API_KEY"
+# optional
+export BASE_URL="https://api.openai.com/v1"
+```
+
+##Step 1: Run evaluation
+Run run_eval.py to score all subsets and produce score_*.csv:
+
+```
+python run_eval.py \
+  --name Nano-banana-pro \
+  --dataset_dir /path/to/WiseEdit-Benchmark \
+  --result_img_root /path/to/result_images_root \
+  --score_output_root /path/to/score_output_root \
+  --num_workers 5 # number of threads used for evaluation
+```
+
+To evaluate only specific CSVs (e.g. Imagination_1.csv and Awareness_1.csv):
+
+```
+python run_eval.py \
+  --name Nano-banana-pro \
+  --dataset_dir /path/to/WiseEdit-Benchmark \
+  --result_img_root /path/to/result_images_root \
+  --score_output_root /path/to/score_output_root \
+  --num_workers 5 \
+  --target_csv Imagination_1.csv Awareness_1.csv
+```
+
+`run_eval.py` will write files like:
+
+```
+/score_csv_root/Ming/score_Imagination_1.csv
+/score_csv_root/Ming/score_Awareness_1.csv
+...
+```
+
+##Step 2: Aggregate statistics
+
+After all `score_*.csv` are ready, run `statistic.py`:
+```
+python statistic.py \
+  --dataset_dir /path/to/WiseEdit-Benchmark \
+  --score_root /path/to/score_output_root \
+  --name Nano-banana-pro \
+  --statistic_output_dir /path/to/statistic_output \
+```
+
+This will generate:
+```
+/statistic_output/Nano-banana-pro_cn.csv
+/statistic_output/Nano-banana-pro_en.csv
+/statistic_output/Nano-banana-pro_complex.csv
+```
+
+and print per-task, per-language averages to the console.
+
+
 
 # ✍️Citation
 
