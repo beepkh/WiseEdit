@@ -140,8 +140,8 @@ WiseEdit-Benchmark/
 All our model evaluation results are also released at:  
 - **WiseEdit-Results**: https://huggingface.co/datasets/midbee/WiseEdit-Results
 
-
 # 🚀 Usage
+## Environment setup
 This project requires Python 3.10.
 First install dependencies (from requirements.txt):
 
@@ -157,7 +157,7 @@ export BASE_URL="https://api.openai.com/v1"
 ```
 If BASE_URL is not set, it will automatically fall back to https://api.openai.com/v1.
 
-## Example with conda start
+### Example with conda start
 ```
 git clone https://github.com/beepkh/WiseEdit
 cd WiseEdit
@@ -174,8 +174,41 @@ export API_KEY="YOUR_API_KEY"
 # optional
 export BASE_URL="https://api.openai.com/v1"
 ```
+## Step 1: Organizing Generated Images
+Before running the evaluation, you need to organize all **generated images** as:
+`result_img_root/<MODEL_NAME>/<SUBSET>/<LANG>/<ID>.png`,
+where `<MODEL_NAME>` is the model tag passed to `--name`, `<SUBSET>` is the CSV/JSON subset name (e.g. `Awareness_1`, `Imagination_2`, `WiseEdit_Complex_3`), `<LANG>` is `cn` or `en`, and `<ID>.png` is the sample id in the corresponding CSV/JSON (e.g. `1.png`, `2.png`, …).
 
-## Step 1: Run evaluation
+You can refer to the **WiseEdit-Results**(https://huggingface.co/datasets/midbee/WiseEdit-Results) for an example of this directory layout.
+```text
+/path/to/result_images_root/
+└── <MODEL_NAME>/                 # e.g. Nano-banana-pro, GPT, etc.
+    ├── Awareness_1/
+    │   ├── cn/
+    │   │   ├── 1.png             # id = 1 in Awareness_1.csv / ins.json (cn)
+    │   │   ├── 2.png
+    │   │   └── ...
+    │   └── en/
+    │       ├── 1.png             # id = 1 in Awareness_1.csv / ins.json (en)
+    │       ├── 2.png
+    │       └── ...
+    ├── Awareness_2/
+    │   ├── cn/
+    │   └── en/
+    ├── Imagination_1/
+    │   ├── cn/
+    │   └── en/
+    ├── Imagination_2/
+    │   └── ...
+    ├── Interpretation_1/
+    │   └── ...
+    ├── WiseEdit_Complex_2/
+    │   └── ...
+    └── ...
+```
+
+
+## Step 2: Run evaluation
 Run `run_eval.py` to score all subsets and produce `score_*.csv`:
 
 ```
@@ -207,7 +240,7 @@ python run_eval.py \
 ...
 ```
 
-## Step 2: Aggregate statistics
+## Step 3: Aggregate statistics
 
 After all `score_*.csv` are ready, run `statistic.py`:
 ```
