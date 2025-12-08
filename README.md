@@ -179,7 +179,7 @@ Before running the evaluation, you need to organize all **generated images** as:
 `result_img_root/<MODEL_NAME>/<SUBSET>/<LANG>/<ID>.png`,
 where `<MODEL_NAME>` is the model tag passed to `--name`, `<SUBSET>` is the CSV/JSON subset name (e.g. `Awareness_1`, `Imagination_2`, `WiseEdit_Complex_3`), `<LANG>` is `cn` or `en`, and `<ID>.png` is the sample id in the corresponding CSV/JSON (e.g. `1.png`, `2.png`, …).
 
-You can refer to the **WiseEdit-Results**(https://huggingface.co/datasets/midbee/WiseEdit-Results) for an example of this directory layout.
+You can refer to the [WiseEdit-Results](https://huggingface.co/datasets/midbee/WiseEdit-Results) for an example of this directory layout.
 ```text
 /path/to/result_images_root/
 └── <MODEL_NAME>/                 # e.g. Nano-banana-pro, GPT, etc.
