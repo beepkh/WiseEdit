@@ -39,7 +39,7 @@ WiseEdit is a knowledge-intensive benchmark for cognition- and creativity-inform
 - [x] Release paper and project page.  
 - [x] Release WiseEdit benchmark data.  
 - [x] Release automatic evaluation code & prompts.  
-- [x] Release baseline results & model outputs(coming soon).  
+- [x] Release baseline results & model outputs.  
 
 # 💡 Overview
 
@@ -101,9 +101,42 @@ where $\alpha$ and $\beta$ are 1 only when KF / CF are applicable.
 Our user study shows strong correlation between this protocol and human ratings.  
 
 # 📊 Dataset & Results
+### WiseEdit-Benchmark
 Our benchmark data is hosted on Hugging Face:  
 - **WiseEdit-Benchmark**: https://huggingface.co/datasets/123123chen/WiseEdit-Benchmark  
 
+The folder structure for WiseEdit-Benchmark is organized as follows:
+```text
+WiseEdit-Benchmark/
+├── WiseEdit/
+│   ├── Awareness/
+│   │   ├── Awareness_1/
+│   │   │   ├── imgs/                  # input images for this subset
+│   │   │   ├── img_ref/               # reference images (if any)
+│   │   │   ├── Awareness_1.csv        # metadata + instructions in CSV format
+│   │   │   └── ins.json               # same annotations in JSON format (used by code)
+│   │   └── Awareness_2/
+│   │       ├── imgs/
+│   │       ├── img_ref/
+│   │       ├── Awareness_2.csv        # metadata + instructions in CSV format
+│   │       └── ins.json               # same annotations in JSON format
+│   ├── Imagination/
+│   │   └── ...                        # similar structure for Imagination subsets
+│   └── Interpretation/
+│       └── ...                        # similar structure for Interpretation subsets
+└── WiseEdit-Complex/
+    ├── WiseEdit_Complex_2/
+    │   ├── imgs/
+    │   ├── img_ref/
+    │   ├── WiseEdit_Complex_2.csv     # metadata + instructions in CSV format
+    │   └── ins.json                   # same annotations in JSON format
+    ├── WiseEdit_Complex_3/
+    │   └── ...
+    └── WiseEdit_Complex_4/
+        └── ...
+ ```
+
+### WiseEdit-Results
 All our model evaluation results are also released at:  
 - **WiseEdit-Results**: https://huggingface.co/datasets/midbee/WiseEdit-Results
 
@@ -124,8 +157,9 @@ export BASE_URL="https://api.openai.com/v1"
 ```
 If BASE_URL is not set, it will automatically fall back to https://api.openai.com/v1.
 
-## Example with conda env
+## Example with conda start
 ```
+git clone https://github.com/beepkh/WiseEdit
 cd WiseEdit
 
 # 1) create and activate env
@@ -142,7 +176,7 @@ export BASE_URL="https://api.openai.com/v1"
 ```
 
 ## Step 1: Run evaluation
-Run run_eval.py to score all subsets and produce `score_*.csv`:
+Run `run_eval.py` to score all subsets and produce `score_*.csv`:
 
 ```
 python run_eval.py \

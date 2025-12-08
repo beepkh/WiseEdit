@@ -253,6 +253,11 @@ def summarize_one_model_by_category(
             result[f"Interpretation_overall_{lang}"],
         ]
         result[f"basic_overall_{lang}"] = sum(basics) / len(basics)
+
+    cx_cn = result.get("WiseEdit_Complex_overall_cn", 0.0)
+    cx_en = result.get("WiseEdit_Complex_overall_en", 0.0)
+    result["WiseEdit_Complex_overall"] = (cx_cn + cx_en) / 2.0
+
     return result
 
 
@@ -277,6 +282,8 @@ def build_headers():
     for m in CATEGORY_METRICS["WiseEdit_Complex"]:
         header_complex.append(f"WiseEdit_Complex_{m}_en")
     header_complex.append("WiseEdit_Complex_overall_en")
+
+    header_complex.append("WiseEdit_Complex_overall")
 
     return header_cn, header_en, header_complex
 
@@ -304,6 +311,9 @@ def print_final_results(model_tag: str, summary: Dict[str, float]) -> None:
 
         basic_overall = summary.get(f"basic_overall_{lang}", 0.0)
         print(f"  Basic Overall AVG: {basic_overall:.1f}")
+
+    complex_overall = summary.get("WiseEdit_Complex_overall", 0.0)
+    print(f"\nComplex Overall (CN+EN AVG): {complex_overall:.1f}")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
