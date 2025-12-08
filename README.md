@@ -86,7 +86,7 @@ These are grounded in **Cultural Common Sense**, **Natural Sciences**, and **Spa
 
 We adopt a **VLM-based automatic evaluation pipeline**:
 
-- **Backbone evaluator**: GPT-4o (other VLMs also studied in the paper).  
+- **Backbone evaluator**: GPT-4o.  
 - **Metrics (1–10 → linearly mapped to 0–100)**:   
   - **IF** – Instruction Following  
   - **DP** – Detail Preserving  
