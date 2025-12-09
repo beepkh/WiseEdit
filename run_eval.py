@@ -12,6 +12,20 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s: %(mes
 
 TARGET_CSV_FILES: List[str] = []
 
+default_CSV_files: List[str] = [
+    "Imagination_1.csv",
+    "Imagination_2.csv",
+    "Imagination_3.csv",
+    "Imagination_4.csv",
+    "Imagination_5.csv",
+    "Awareness_1.csv",
+    "Awareness_2.csv",
+    "Interpretation_1.csv",
+    "WiseEdit_Complex_2.csv",
+    "WiseEdit_Complex_3.csv",
+    "WiseEdit_Complex_4.csv",
+]
+
 ALL_METRICS = [
     "detail_preserving",
     "instruction_following",
@@ -477,15 +491,14 @@ if __name__ == "__main__":
                 if fn.lower().endswith(".csv"):
                     yield root, fn
 
+
     if args.target_csv:
-        # Only evaluate specified CSV file names (match by basename anywhere under csv_dir)
         target_names = set(args.target_csv)
-        for root, fn in _walk_csv_under(dataset_dir):
-            if fn in target_names:
-                csv_files.append(os.path.join(root, fn))
     else:
-        # Default: all CSV files under dataset_dir (except inside imgs / img_ref)
-        for root, fn in _walk_csv_under(dataset_dir):
+        target_names = set(default_CSV_files)
+
+    for root, fn in _walk_csv_under(dataset_dir):
+        if fn in target_names:
             csv_files.append(os.path.join(root, fn))
 
     if not csv_files:
