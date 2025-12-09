@@ -248,7 +248,7 @@ python statistic.py \
   --dataset_dir /path/to/WiseEdit-Benchmark \
   --score_root /path/to/score_output_root \
   --name Nano-banana-pro \
-  --statistic_output_dir /path/to/statistic_output \
+  --statistic_output_dir /path/to/statistic_output 
 ```
 
 This will generate:
