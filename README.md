@@ -207,6 +207,8 @@ You can refer to the [WiseEdit-Results](https://huggingface.co/datasets/midbee/W
     └── ...
 ```
 
+`Evaluation/generate_image_example.py` uses FLUX.2-Dev as an example to demonstrate how to generate the corresponding images for each test case in WiseEdit.
+
 
 ## Step 2: Run evaluation
 Run `run_eval.py` to score all subsets and produce `score_*.csv`:
@@ -258,7 +260,7 @@ This will generate:
 /statistic_output/Nano-banana-pro_complex.csv
 ```
 
-and print per-task, per-language averages to the console.
+and print per-task, per-language averages to the console (You can replace Nano-banana-pro with your own model-name).
 
 **If you only want to test the results under single image (like Table 5 and Table 6 in our paper)**, After all `score_*_1.csv` are ready (note there is no score_WiseEdit_Complex_1.csv), run `statistic_single.py`:
 ```
