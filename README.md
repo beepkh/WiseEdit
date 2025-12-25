@@ -260,7 +260,21 @@ This will generate:
 
 and print per-task, per-language averages to the console.
 
+**If you only want to test the results under single image (like Table 5 and Table 6 in our paper)**, After all `score_*_1.csv` are ready (note there is no score_WiseEdit_Complex_1.csv), run `statistic_single.py`:
+```
+python statistic_single.py \
+  --dataset_dir /path/to/WiseEdit-Benchmark \
+  --score_root /path/to/score_output_root \
+  --name Nano-banana-pro \
+  --statistic_output_dir /path/to/statistic_output 
+```
 
+This will generate:
+```
+/statistic_output/Nano-banana-pro_cn_sing.csv
+/statistic_output/Nano-banana-pro_en_sing.csv
+```
+and print per-task, per-language averages to the console.
 
 # ✍️Citation
 
